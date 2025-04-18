@@ -1,3 +1,7 @@
+-- Snacks animations
+-- Set to `false` to globally disable all snacks animations
+vim.g.snacks_animate = true
+
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
