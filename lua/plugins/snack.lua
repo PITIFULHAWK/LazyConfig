@@ -14,7 +14,7 @@ return {
         file = { filename_only = true },
         severity = { pos = "right" },
       },
-      matcher = { sort_empty = false, fuzzy = true },
+      matcher = { sort_empty = true, fuzzy = true, show_hidden = true },
       win = {
         list = {
           keys = {
