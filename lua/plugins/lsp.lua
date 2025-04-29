@@ -3,17 +3,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     -- still have our CursorHold hover & updatetime tweak
-    init = function()
-      vim.o.updatetime = 250
-      vim.api.nvim_create_augroup("_CursorDiagnostics", { clear = true })
-      vim.api.nvim_create_autocmd("CursorHold", {
-        group    = "_CursorDiagnostics",
-        pattern  = "*",
-        callback = function()
-          vim.diagnostic.open_float(nil, { focusable = false })
-        end,
-      })
-    end,
+    -- init = function()
+    --   vim.o.updatetime = 250
+    --   vim.api.nvim_create_augroup("_CursorDiagnostics", { clear = true })
+    --   vim.api.nvim_create_autocmd("CursorHold", {
+    --     group    = "_CursorDiagnostics",
+    --     pattern  = "*",
+    --     callback = function()
+    --       vim.diagnostic.open_float(nil, { focusable = false })
+    --     end,
+    --   })
+    -- end,
 
     -- pull in typescript.nvim and SchemaStore support
     dependencies = {
@@ -110,7 +110,11 @@ return {
                   typeCheckingMode = "basic",
                   autoSearchPaths  = true,
                   useLibraryCodeForTypes = true,
+                  diagnosticMode = "workspace",
+                  extraPaths = { "." }, -- Helps find local packages
                 },
+                venvPath = ".",      -- <- This tells Pyright where to find `.venv`
+                venv = ".venv",      -- <- Optional: preferred environment folder name
               },
             },
           },
